@@ -13,7 +13,7 @@ const uniqueMessage = error => {
         output =
             fieldName.charAt(0).toUpperCase() +
             fieldName.slice(1) +
-            "already exists";
+            " already exists";
     } catch (ex) {
         output = "Unique field already exists";
     }
