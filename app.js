@@ -5,13 +5,13 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const expressValidator = require("express-validator");
+const expressJwt = require("express-jwt");
 require("dotenv").config();
 // import routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
-const braintreeRoutes = require("./routes/braintree");
 const orderRoutes = require("./routes/order");
 
 // app
@@ -33,11 +33,11 @@ app.use(expressValidator());
 app.use(cors());
 
 // routes middleware
+app.use("/api", expressJwt({ secret: "secret" }));
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
-// app.use('/api', braintreeRoutes);
 app.use("/api", orderRoutes);
 
 const port = process.env.PORT || 8000;
