@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const expressValidator = require("express-validator");
-const expressJwt = require("express-jwt");
+// const expressJwt = require("express-jwt");
 require("dotenv").config();
 // import routes
 const authRoutes = require("./routes/auth");
@@ -33,7 +33,7 @@ app.use(expressValidator());
 app.use(cors());
 
 // routes middleware
-app.use("/api", expressJwt({ secret: "secret" }));
+// app.use("/api", expressJwt({ secret: "secret" }));
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
